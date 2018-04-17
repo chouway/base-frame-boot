@@ -256,8 +256,8 @@
         </plugins>
     </build>
 
-    <!--<scm>
-        <connection>scm:git:http://172.16.6.143:7990/scm/frame/base-framework.git</connection>
+    <scm>
+        <connection>scm:git:https://github.com/chouway/base-frame-boot.git</connection>
         <tag>HEAD</tag>
-    </scm>-->
+    </scm>
 </project>
