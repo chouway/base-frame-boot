@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+    <property name="CONSOLE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{500} - %X{username} - %X{logSerial} - %msg%n"/>
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %X{username} - %X{logSerial} - %msg%n"/>
+
+    <property name="FILE_NAME_PATTERN" value="${LOG_FILE}.%d{yyyy-MM-dd}.log"/>
+    <property name="FILE_NAME_PATTERN_ERROR" value="${LOG_FILE}.%d{yyyy-MM-dd}.error.log"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="FILE-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_NAME_PATTERN}</fileNamePattern>
+            <MaxHistory>${LOG_MAX_HISTORY_COUNT}</MaxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${LOG_LEVEL}</level>
+        </filter>
+    </appender>
+
+    <appender name="FILE-LOG-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_NAME_PATTERN_ERROR}</fileNamePattern>
+            <MaxHistory>${LOG_MAX_HISTORY_COUNT}</MaxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+</included>

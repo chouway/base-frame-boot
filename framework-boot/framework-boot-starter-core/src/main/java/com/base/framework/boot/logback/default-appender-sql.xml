@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+    <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %X{username} - %X{logSerial} - %msg%n"/>
+
+    <property name="FILE_NAME_PATTERN_SQL" value="${LOG_FILE}.%d{yyyy-MM-dd}.sql.log"/>
+
+    <appender name="FILE-LOG-SQL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_NAME_PATTERN_SQL}</fileNamePattern>
+            <MaxHistory>${LOG_MAX_HISTORY_COUNT}</MaxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${LOG_LEVEL}</level>
+        </filter>
+    </appender>
+
+</included>
