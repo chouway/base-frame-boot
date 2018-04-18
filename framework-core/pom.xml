@@ -38,8 +38,6 @@
             <scope>provided</scope>
         </dependency>
 
-
-
         <!-- end slf4j   logback -->
     </dependencies>
 </project>

@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.base.demo</groupId>
     <artifactId>framework-demo</artifactId>
     <packaging>pom</packaging>
 
@@ -16,4 +17,18 @@
         <module>demo-api</module>
         <module>demo-service</module>
     </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.base.demo</groupId>
+                <artifactId>demo-api</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.base.demo</groupId>
+                <artifactId>demo-service</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

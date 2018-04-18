@@ -1,0 +1,183 @@
+目标package: maven_build.mgb.table
+
+当前时间：
+2018-4-18
+17:21:55
+2018-04-18 17:21:55
+
+所有配置的属性信息:
+targetPackage - maven_build.mgb.table
+templatePath - generator/test-one.ftl
+targetProject - ./src/main/resources
+fileName - ${tableClass.shortClassName}.txt
+
+实体和表的信息：
+表名：t_base_union_info
+变量名：unionInfo
+小写名：unioninfo
+类名：UnionInfo
+全名：com.base.demo.domain.UnionInfo
+包名：com.base.demo.domain
+
+列的信息：
+=====================================
+主键：
+    -------------------------------------
+    列名：id
+    列类型：VARCHAR
+    字段名：id
+    注释：平台id
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：32
+    列精度：0
+
+基础列：
+    -------------------------------------
+    列名：name
+    列类型：VARCHAR
+    字段名：name
+    注释：平台名称
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：64
+    列精度：0
+    -------------------------------------
+    列名：domail_url
+    列类型：VARCHAR
+    字段名：domailUrl
+    注释：域名
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：128
+    列精度：0
+    -------------------------------------
+    列名：remark
+    列类型：VARCHAR
+    字段名：remark
+    注释：备注
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：128
+    列精度：0
+    -------------------------------------
+    列名：create_user_id
+    列类型：VARCHAR
+    字段名：createUserId
+    注释：创建人
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：32
+    列精度：0
+    -------------------------------------
+    列名：create_ts
+    列类型：TIMESTAMP
+    字段名：createTs
+    注释：创建时间
+    类型包名：java.util
+    类型短名：Date
+    类型全名：java.util.Date
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：35
+    列精度：6
+    -------------------------------------
+    列名：update_user_id
+    列类型：VARCHAR
+    字段名：updateUserId
+    注释：更新人id
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：32
+    列精度：0
+    -------------------------------------
+    列名：update_ts
+    列类型：TIMESTAMP
+    字段名：updateTs
+    类型包名：java.util
+    类型短名：Date
+    类型全名：java.util.Date
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：35
+    列精度：6
+
+Blob列：
+
+=====================================
+全部列：
+列名 - 字段名
+    id - id
+    name - name
+    domail_url - domailUrl
+    remark - remark
+    create_user_id - createUserId
+    create_ts - createTs
+    update_user_id - updateUserId
+    update_ts - updateTs

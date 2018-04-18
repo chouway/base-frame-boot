@@ -1,0 +1,204 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+
+    <changeSet id="init.t_base.20180418_0" author="ywzhou">
+        <sql>
+            <![CDATA[
+            DROP TABLE IF EXISTS "t_base_param_info";
+            CREATE TABLE "t_base_param_info" (
+              "id" varchar(32) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "code" varchar(64) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "name" varchar(64) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "type" varchar(64) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "parent_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "remark" varchar(256) COLLATE "pg_catalog"."default" DEFAULT NULL
+            )
+            ;
+            COMMENT ON COLUMN "t_base_param_info"."code" IS '字典码';
+            COMMENT ON COLUMN "t_base_param_info"."name" IS '字典名称';
+            COMMENT ON COLUMN "t_base_param_info"."type" IS '类别';
+            COMMENT ON COLUMN "t_base_param_info"."remark" IS '备注';
+            COMMENT ON TABLE "t_base_param_info" IS '字典表';
+
+            -- ----------------------------
+            -- Records of t_base_param_info
+            -- ----------------------------
+            BEGIN;
+            INSERT INTO "t_base_param_info" VALUES ('a', 'code_0', 'name_0', 'type', NULL, NULL);
+            INSERT INTO "t_base_param_info" VALUES ('b', 'code_1', 'name_1', 'type', NULL, NULL);
+            INSERT INTO "t_base_param_info" VALUES ('a_a', 'code_0', 'name_0', 'sub_type', 'a', NULL);
+            INSERT INTO "t_base_param_info" VALUES ('a_b', 'code_1', 'name_1', 'sub_type', 'a', NULL);
+            COMMIT;
+
+            -- ----------------------------
+            -- Table structure for t_base_resource_info
+            -- ----------------------------
+            DROP TABLE IF EXISTS "t_base_resource_info";
+            CREATE TABLE "t_base_resource_info" (
+              "id" int4 NOT NULL DEFAULT NULL,
+              "name" varchar(64) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "url" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "type" char(1) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "remark" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "union_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "create_user_id" varchar(32) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "create_ts" timestamptz(6) DEFAULT NULL,
+              "update_user_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "update_ts" timestamptz(6) DEFAULT NULL
+            )
+            ;
+            COMMENT ON COLUMN "t_base_resource_info"."id" IS '主键';
+            COMMENT ON COLUMN "t_base_resource_info"."name" IS '资源名称';
+            COMMENT ON COLUMN "t_base_resource_info"."type" IS '资源类型：应用 0 ； ';
+            COMMENT ON COLUMN "t_base_resource_info"."remark" IS '备注';
+            COMMENT ON COLUMN "t_base_resource_info"."union_id" IS '平台id';
+            COMMENT ON COLUMN "t_base_resource_info"."create_user_id" IS '创建人id';
+            COMMENT ON COLUMN "t_base_resource_info"."update_user_id" IS '更新人id';
+            COMMENT ON COLUMN "t_base_resource_info"."update_ts" IS ' 更新时间';
+            COMMENT ON TABLE "t_base_resource_info" IS '资源表';
+
+            -- ----------------------------
+            -- Table structure for t_base_role_info
+            -- ----------------------------
+            DROP TABLE IF EXISTS "t_base_role_info";
+            CREATE TABLE "t_base_role_info" (
+              "id" int4 NOT NULL DEFAULT NULL,
+              "name" varchar(64) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "type" char(1) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "remark" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "union_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "create_user_id" varchar(32) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "create_ts" timestamptz(6) DEFAULT NULL,
+              "update_user_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "update_ts" timestamptz(6) DEFAULT NULL
+            )
+            ;
+            COMMENT ON COLUMN "t_base_role_info"."id" IS '主键';
+            COMMENT ON COLUMN "t_base_role_info"."name" IS '角色名称';
+            COMMENT ON COLUMN "t_base_role_info"."type" IS '角色类型：应用 0';
+            COMMENT ON COLUMN "t_base_role_info"."remark" IS '备注';
+            COMMENT ON COLUMN "t_base_role_info"."union_id" IS '平台id';
+            COMMENT ON COLUMN "t_base_role_info"."create_user_id" IS '创建人id';
+            COMMENT ON COLUMN "t_base_role_info"."update_user_id" IS '更新人id';
+            COMMENT ON COLUMN "t_base_role_info"."update_ts" IS ' 更新时间';
+            COMMENT ON TABLE "t_base_role_info" IS ' 帐户表';
+
+            -- ----------------------------
+            -- Table structure for t_base_role_resource_rel
+            -- ----------------------------
+            DROP TABLE IF EXISTS "t_base_role_resource_rel";
+            CREATE TABLE "t_base_role_resource_rel" (
+              "id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "role_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "resource_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL
+            )
+            ;
+            COMMENT ON COLUMN "t_base_role_resource_rel"."role_id" IS '角色id';
+            COMMENT ON COLUMN "t_base_role_resource_rel"."resource_id" IS '资源id';
+            COMMENT ON TABLE "t_base_role_resource_rel" IS '角色-资源-关系表';
+
+            -- ----------------------------
+            -- Table structure for t_base_union_info
+            -- ----------------------------
+            DROP TABLE IF EXISTS "t_base_union_info";
+            CREATE TABLE "t_base_union_info" (
+              "id" varchar(32) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "name" varchar(64) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "domail_url" varchar(128) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "remark" varchar(128) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "create_user_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "create_ts" timestamptz(6) DEFAULT NULL,
+              "update_user_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "update_ts" timestamptz(6) DEFAULT NULL
+            )
+            ;
+            COMMENT ON COLUMN "t_base_union_info"."id" IS '平台id';
+            COMMENT ON COLUMN "t_base_union_info"."name" IS '平台名称';
+            COMMENT ON COLUMN "t_base_union_info"."domail_url" IS '域名';
+            COMMENT ON COLUMN "t_base_union_info"."remark" IS '备注';
+            COMMENT ON COLUMN "t_base_union_info"."create_user_id" IS '创建人';
+            COMMENT ON COLUMN "t_base_union_info"."create_ts" IS '创建时间';
+            COMMENT ON COLUMN "t_base_union_info"."update_user_id" IS '更新人id';
+            COMMENT ON TABLE "t_base_union_info" IS '平台信息表';
+
+            -- ----------------------------
+            -- Table structure for t_base_user_info
+            -- ----------------------------
+            DROP TABLE IF EXISTS "t_base_user_info";
+            CREATE TABLE "t_base_user_info" (
+              "id" int4 NOT NULL DEFAULT NULL,
+              "name" varchar(64) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "password" varchar(128) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "mobile_no" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "salt" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "remark" varchar(255) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "union_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "authe_status" char(1) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "is_valid" char(1) COLLATE "pg_catalog"."default" DEFAULT 1,
+              "create_user_id" varchar(32) COLLATE "pg_catalog"."default" NOT NULL DEFAULT NULL,
+              "create_ts" timestamptz(6) DEFAULT NULL,
+              "update_user_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "update_ts" timestamptz(6) DEFAULT NULL
+            )
+            ;
+            COMMENT ON COLUMN "t_base_user_info"."id" IS '主键';
+            COMMENT ON COLUMN "t_base_user_info"."name" IS ' ';
+            COMMENT ON COLUMN "t_base_user_info"."mobile_no" IS '手机号';
+            COMMENT ON COLUMN "t_base_user_info"."salt" IS ' 密码盐';
+            COMMENT ON COLUMN "t_base_user_info"."remark" IS '备注';
+            COMMENT ON COLUMN "t_base_user_info"."union_id" IS '平台id';
+            COMMENT ON COLUMN "t_base_user_info"."authe_status" IS '认证状态： 未认证 0  ； 认证中 1 ； 已认证 2；';
+            COMMENT ON COLUMN "t_base_user_info"."is_valid" IS '是否有效';
+            COMMENT ON COLUMN "t_base_user_info"."create_user_id" IS '创建人id';
+            COMMENT ON COLUMN "t_base_user_info"."update_user_id" IS '更新人id';
+            COMMENT ON COLUMN "t_base_user_info"."update_ts" IS ' 更新时间';
+            COMMENT ON TABLE "t_base_user_info" IS ' 帐户表';
+
+            -- ----------------------------
+            -- Table structure for t_base_user_role_rel
+            -- ----------------------------
+            DROP TABLE IF EXISTS "t_base_user_role_rel";
+            CREATE TABLE "t_base_user_role_rel" (
+              "id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "user_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL,
+              "role_id" varchar(32) COLLATE "pg_catalog"."default" DEFAULT NULL
+            )
+            ;
+            COMMENT ON COLUMN "t_base_user_role_rel"."user_id" IS '用户id';
+            COMMENT ON COLUMN "t_base_user_role_rel"."role_id" IS '角色id';
+            COMMENT ON TABLE "t_base_user_role_rel" IS '用户-角色-关系表';
+
+            -- ----------------------------
+            -- Primary Key structure for table t_base_param_info
+            -- ----------------------------
+            ALTER TABLE "t_base_param_info" ADD CONSTRAINT "t_base_param_info_pkey" PRIMARY KEY ("id");
+
+            -- ----------------------------
+            -- Primary Key structure for table t_base_resource_info
+            -- ----------------------------
+            ALTER TABLE "t_base_resource_info" ADD CONSTRAINT "t_base_resource_info_pkey" PRIMARY KEY ("id");
+
+            -- ----------------------------
+            -- Primary Key structure for table t_base_role_info
+            -- ----------------------------
+            ALTER TABLE "t_base_role_info" ADD CONSTRAINT "t_base_role_info_pkey" PRIMARY KEY ("id");
+
+            -- ----------------------------
+            -- Primary Key structure for table t_base_union_info
+            -- ----------------------------
+            ALTER TABLE "t_base_union_info" ADD CONSTRAINT "t_base_union_info_pkey" PRIMARY KEY ("id");
+
+            -- ----------------------------
+            -- Primary Key structure for table t_base_user_info
+            -- ----------------------------
+            ALTER TABLE "t_base_user_info" ADD CONSTRAINT "t_base_user_info_pkey" PRIMARY KEY ("id");
+        ]]>
+        </sql>
+    </changeSet>
+</databaseChangeLog>

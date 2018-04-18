@@ -1,4 +1,4 @@
-package com.base.framework.core.exception;
+package com.base.framework.common.exception;
 
 /**
  * BusinessException

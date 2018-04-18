@@ -14,9 +14,11 @@
     <dependencies>
 
         <dependency>
-            <groupId>tk.mybatis</groupId>
-            <artifactId>mapper-spring-boot-starter</artifactId>
+            <groupId>com.base</groupId>
+            <artifactId>framework-api</artifactId>
         </dependency>
+
+
 
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -31,11 +33,12 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mybatis.generator</groupId>
-            <artifactId>mybatis-generator-maven-plugin</artifactId>
-            <version>${mybatis-generator-maven-plugin.version}</version>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper-spring-boot-starter</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        
     </dependencies>
 
 </project>

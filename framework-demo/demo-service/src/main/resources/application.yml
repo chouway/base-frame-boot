@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/base_admin
+    username: test
+    password: test
+
+liquibase:
+  change-log: classpath:liquibase/master.xml
+  url: ${spring.datasource.url}
+  user: ${spring.datasource.username}
+  password: ${spring.datasource.password}
+  enabled: true
+  drop-first: false
+
+---
+spring:
+  profiles: local
+

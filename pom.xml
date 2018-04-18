@@ -27,8 +27,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <skipRequireRelease>true</skipRequireRelease><!-- 是否跳过 必须依赖正式版本的检查 -->
         <jdk.version>1.8</jdk.version>
+        <junit.version>4.12</junit.version>
 
-        <fastjson.version>1.1.36</fastjson.version>
+        <fastjson.version>1.2.47</fastjson.version>
         <jetty-maven-plugin.version>7.6.16.v20140903</jetty-maven-plugin.version>
         <spring-cloud-config-client.version>1.4.3.RELEASE</spring-cloud-config-client.version>
         <persistence-api.version>1.0.2</persistence-api.version>
@@ -80,6 +81,18 @@
     </dependencyManagement>
 
     <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
 
         <pluginManagement>
             <plugins>
