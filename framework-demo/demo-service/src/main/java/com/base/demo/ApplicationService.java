@@ -16,7 +16,6 @@ import java.util.concurrent.CountDownLatch;
  * @author zhouyw
  * @date 2018.04.18
  */
-//@MapperScan(basePackages = "com.base.demo.dao")
 @SpringBootApplication(scanBasePackages = {"com.base.demo"})
 @EnableAsync
 public class ApplicationService {
