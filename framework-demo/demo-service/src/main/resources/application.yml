@@ -7,7 +7,7 @@ spring:
     password: test
 
 liquibase:
-  change-log: classpath:liquibase/master.xml
+  change-log: classpath:maven_build/liquibase/master.xml
   url: ${spring.datasource.url}
   user: ${spring.datasource.username}
   password: ${spring.datasource.password}

@@ -73,11 +73,9 @@
                 <version>${liquibase.version}</version>
                 <configuration>
                     <changeLogFile>${basedir}/src/main/resources/maven_build/liquibase/master.xml</changeLogFile>
-                    <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://127.0.0.1:5432/base_admin</url>
-                    <username>test</username>
-                    <password>test</password>
+                    <propertyFile>${basedir}/src/main/resources/maven_build/database.properties</propertyFile>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <verbose>true</verbose>
                 </configuration>
             </plugin>
         </plugins>
