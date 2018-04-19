@@ -6,10 +6,12 @@ import com.base.demo.domain.ParamInfo;
 import com.base.demo.service.common.vo.ParamInfoCond;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -21,8 +23,16 @@ import static org.junit.Assert.*;
  */
 public class ParamInfoServiceTest extends CommonTest{
 
+    @Value("${app.param.version}")
+    private String version;
+
     @Autowired
     private IParamInfoService paramInfoService;
+
+    @PostConstruct
+    public void init(){
+        logger.info("init-->version={}", version);
+    }
 
     @Test
     public void getByTypeCode() {
@@ -80,4 +90,6 @@ public class ParamInfoServiceTest extends CommonTest{
         PagedListHolder<ParamInfo> pageDb = paramInfoService.getPage(cond, page);
         logger.info("-->pageDb={}", JSON.toJSONString(pageDb));
     }
+
+    /* -----private method spilt----- */
 }

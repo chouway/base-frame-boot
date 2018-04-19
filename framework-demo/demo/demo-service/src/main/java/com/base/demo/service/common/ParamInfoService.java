@@ -124,4 +124,5 @@ public class ParamInfoService implements IParamInfoService {
         page.setPageSize(pageSize);
         return page;
     }
+    /* -----private method spilt----- */
 }
