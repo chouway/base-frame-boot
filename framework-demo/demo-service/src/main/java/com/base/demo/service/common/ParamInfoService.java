@@ -4,6 +4,7 @@ import com.base.demo.dao.ParamInfoDao;
 import com.base.demo.service.common.dao.ParamInfoDaoExt;
 import com.base.demo.domain.ParamInfo;
 import com.base.framework.common.exception.BusinessException;
+import com.base.framework.core.util.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,5 +67,27 @@ public class ParamInfoService implements IParamInfoService {
     public List<ParamInfo> getTree(String type, String code) throws BusinessException {
         //需用到自定义循环 with ..
         return paramInfoDaoExt.getTree(type,code);
+    }
+
+    @Override
+    public ParamInfo save(ParamInfo paramInfo) throws BusinessException {
+        if(paramInfo == null){
+            throw new BusinessException("字典为空");
+        }
+        boolean isAdd = StringUtils.isEmpty(paramInfo.getId());
+        if(isAdd){
+            paramInfo.setId(UUIDUtils.generate());
+            paramInfoDao.insert(paramInfo);
+        }else{
+            paramInfoDao.updateByPrimaryKey(paramInfo);
+        }
+        return paramInfo;
+    }
+
+    @Override
+    public int remove(String id) throws BusinessException {
+        ParamInfo paramInfo = new ParamInfo();
+        paramInfo.setId(id);
+        return paramInfoDao.deleteByPrimaryKey(paramInfo);
     }
 }

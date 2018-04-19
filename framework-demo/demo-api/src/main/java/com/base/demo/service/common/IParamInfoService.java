@@ -43,4 +43,20 @@ public interface IParamInfoService {
      * @throws BusinessException
      */
     List<ParamInfo> getTree(String type,String code)throws BusinessException;
+
+    /**
+     * 保存字典
+     * @param paramInfo
+     * @return
+     * @throws BusinessException
+     */
+    ParamInfo save(ParamInfo paramInfo)throws BusinessException;
+
+    /**
+     * 移除字典
+     * @param paramInfo
+     * @return
+     * @throws BusinessException
+     */
+    int remove(String id)throws BusinessException;
 }
