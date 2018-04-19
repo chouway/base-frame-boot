@@ -63,7 +63,7 @@ public class ParamInfoServiceTest extends CommonTest{
     }
 
     @Test
-    public void remove() {//测试下 自动回事务
+    public void remove() {//测试下 自动回滚事务
         String id = "b";
         int remove = paramInfoService.remove(id);
         logger.info("-->remove={}", remove);

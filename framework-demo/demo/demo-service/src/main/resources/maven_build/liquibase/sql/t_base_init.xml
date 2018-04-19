@@ -209,4 +209,13 @@
             COMMENT ON COLUMN "t_base_param_info"."index" IS '序列';
         </sql>
     </changeSet>
+
+
+    <changeSet id="add.t_base_param_info.20180419.1" author="ywzhou">
+        <sql>
+            ALTER TABLE "public"."t_base_param_info"
+            ADD CONSTRAINT "t_base_param_info_unique" UNIQUE ("code", "type");
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>

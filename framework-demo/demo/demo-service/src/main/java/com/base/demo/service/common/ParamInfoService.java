@@ -1,14 +1,18 @@
 package com.base.demo.service.common;
 
+import com.alibaba.fastjson.JSON;
 import com.base.demo.dao.ParamInfoDao;
 import com.base.demo.service.common.dao.ParamInfoDaoExt;
 import com.base.demo.domain.ParamInfo;
 import com.base.demo.service.common.vo.ParamInfoCond;
 import com.base.framework.common.exception.BusinessException;
 import com.base.framework.core.util.UUIDUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -26,6 +30,8 @@ import java.util.Map;
 @Service
 @Transactional
 public class ParamInfoService implements IParamInfoService {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ParamInfoDao paramInfoDao;
@@ -76,17 +82,28 @@ public class ParamInfoService implements IParamInfoService {
 
     @Override
     public ParamInfo save(ParamInfo paramInfo) throws BusinessException {
-        if(paramInfo == null){
-            throw new BusinessException("字典为空");
+        try{
+           if(paramInfo == null){
+               throw new BusinessException("字典为空");
+           }
+           boolean isAdd = StringUtils.isEmpty(paramInfo.getId());
+           if(isAdd){
+               paramInfo.setId(UUIDUtils.generate());
+               paramInfoDao.insert(paramInfo);
+           }else{
+               paramInfoDao.updateByPrimaryKey(paramInfo);
+           }
+           return paramInfo;
+        }catch (BusinessException e){
+           logger.error("busi error:{}-->[paramInfo]={}",e.getMessage(), JSON.toJSONString(new Object[]{paramInfo}),e);
+           throw e;
+        }catch (Exception e){
+           logger.error("error:{}-->[paramInfo]={}",e.getMessage(),JSON.toJSONString(new Object[]{paramInfo}),e);
+           if(e instanceof DuplicateKeyException){
+               throw new BusinessException("保存失败:重复!");
+           }
+           throw new BusinessException("系统错误");
         }
-        boolean isAdd = StringUtils.isEmpty(paramInfo.getId());
-        if(isAdd){
-            paramInfo.setId(UUIDUtils.generate());
-            paramInfoDao.insert(paramInfo);
-        }else{
-            paramInfoDao.updateByPrimaryKey(paramInfo);
-        }
-        return paramInfo;
     }
 
     @Override
