@@ -14,7 +14,7 @@ spring:
     drop-first: false
 
 mybatis:
-  mapper-locations: classpath:com/base/demo/dao/ext/*DaoExt.xml
+  mapper-locations: classpath:com/base/demo/service/**/dao/*DaoExt.xml
   configuration:
       mapUnderscoreToCamelCase: true
 
