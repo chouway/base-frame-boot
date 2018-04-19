@@ -1,13 +1,13 @@
 package com.base.demo.service.common;
 
 import com.base.demo.dao.ParamInfoDao;
+import com.base.demo.service.common.dao.ParamInfoDaoExt;
 import com.base.demo.domain.ParamInfo;
 import com.base.framework.common.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,9 @@ public class ParamInfoService implements IParamInfoService {
 
     @Autowired
     private ParamInfoDao paramInfoDao;
+
+    @Autowired
+    private ParamInfoDaoExt paramInfoDaoExt;
 
     @Override
     public ParamInfo getByTypeCode(String type,String code) throws BusinessException {
@@ -62,6 +65,6 @@ public class ParamInfoService implements IParamInfoService {
     @Override
     public List<ParamInfo> getTree(String type, String code) throws BusinessException {
         //需用到自定义循环 with ..
-        return null;
+        return paramInfoDaoExt.getTree(type,code);
     }
 }

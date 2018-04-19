@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.base.demo.service.common.dao.ParamInfoDaoExt">
+
+    <select id="getTree" resultType="com.base.demo.domain.ParamInfo" parameterType="java.util.Map">
+         with RECURSIVE tem_info as(
+            select * FROM t_base_param_info where type = #{type} and code = #{code}
+              UNION ALL
+            select  a.* FROM t_base_param_info a INNER JOIN tem_info b ON b.id = a.parent_id
+         )
+         SELECT * FROM tem_info;
+    </select>
+
+
+
+</mapper>

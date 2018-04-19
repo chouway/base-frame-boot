@@ -6,6 +6,8 @@ import com.base.demo.domain.ParamInfo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -36,5 +38,9 @@ public class ParamInfoServiceTest extends CommonTest{
 
     @Test
     public void getTree() {
+        String type = "type";
+        String code = "code_0";
+        List<ParamInfo> tree = paramInfoService.getTree(type, code);
+        logger.info("-->tree={}", JSON.toJSONString(tree));
     }
 }

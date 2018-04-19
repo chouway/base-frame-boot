@@ -5,14 +5,18 @@ spring:
     url: jdbc:postgresql://127.0.0.1:5432/base_admin
     username: test
     password: test
+  liquibase:
+    change-log: classpath:maven_build/liquibase/master.xml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    enabled: true
+    drop-first: false
 
-liquibase:
-  change-log: classpath:maven_build/liquibase/master.xml
-  url: ${spring.datasource.url}
-  user: ${spring.datasource.username}
-  password: ${spring.datasource.password}
-  enabled: true
-  drop-first: false
+mybatis:
+  mapper-locations: classpath:com/base/demo/dao/ext/*DaoExt.xml
+  configuration:
+      mapUnderscoreToCamelCase: true
 
 ---
 spring:
