@@ -16,3 +16,13 @@ service：
 1. data deal from database: add | edit | remove |get (page) is maturity;
 2. database table optimise with linquibase;
 3. easy to understand code structure; easy test;
+
+
+开发简略思路：
+1.设计库表：navicat 模型 -》设计好 ndm （粗略） -》 导出sql -》 集成sql到持续化数据库集成工具 linquibase的 changelog_Sql里
+2.执行插件 liquibase的update; 然后追加到自动化生成mybatis代码工具mgb的 generatorConfig.xml的表； 执行mybatis-generator; 生成 简易Dao、domain
+3.各模块开发业务逻辑； api service dao DaoExt.xml;  注意约定的结构化
+4.复杂处理过程，生成test；验证过程；
+
+
+
