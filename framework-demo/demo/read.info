@@ -1,0 +1,18 @@
+apply framework:
+
+spring boot 2.0.0;
+
+database:
+    postgres;
+
+dao:
+    mybatis;
+    common-mapper;
+    mgb;
+
+service：
+    spring;
+
+1. data deal from database: add | edit | remove |get (page) is maturity;
+2. database table optimise with linquibase;
+3. easy to understand code structure; easy test;
