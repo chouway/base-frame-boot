@@ -3,15 +3,20 @@ package com.base.demo.service.common;
 import com.base.demo.dao.ParamInfoDao;
 import com.base.demo.service.common.dao.ParamInfoDaoExt;
 import com.base.demo.domain.ParamInfo;
+import com.base.demo.service.common.vo.ParamInfoCond;
 import com.base.framework.common.exception.BusinessException;
 import com.base.framework.core.util.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
+import org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ParamInfoService
@@ -89,5 +94,17 @@ public class ParamInfoService implements IParamInfoService {
         ParamInfo paramInfo = new ParamInfo();
         paramInfo.setId(id);
         return paramInfoDao.deleteByPrimaryKey(paramInfo);
+    }
+
+    @Override
+    public PagedListHolder<ParamInfo> getPage(ParamInfoCond cond,PagedListHolder page) throws BusinessException {
+        if(page==null){
+            page = new PagedListHolder();
+        }
+        int pageSize = paramInfoDaoExt.countList(cond);
+        List<ParamInfo> list = paramInfoDaoExt.getList(cond, page);
+        page.setSource(list);
+        page.setPageSize(pageSize);
+        return page;
     }
 }

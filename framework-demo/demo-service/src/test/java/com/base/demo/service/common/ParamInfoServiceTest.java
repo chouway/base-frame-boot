@@ -3,8 +3,10 @@ package com.base.demo.service.common;
 import com.alibaba.fastjson.JSON;
 import com.base.demo.CommonTest;
 import com.base.demo.domain.ParamInfo;
+import com.base.demo.service.common.vo.ParamInfoCond;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,5 +68,16 @@ public class ParamInfoServiceTest extends CommonTest{
         int remove = paramInfoService.remove(id);
         logger.info("-->remove={}", remove);
         
+    }
+
+    @Test
+    public void getPage() {
+        ParamInfoCond cond = new ParamInfoCond();
+        cond.setType("type");
+        PagedListHolder<ParamInfo> page = new PagedListHolder<>();
+        page.setPage(0);
+        page.setPageSize(1);
+        PagedListHolder<ParamInfo> pageDb = paramInfoService.getPage(cond, page);
+        logger.info("-->pageDb={}", JSON.toJSONString(pageDb));
     }
 }

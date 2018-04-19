@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <included>
-    <logger name="com.base.framework.dao.cache.BaseCacheWrapper" level="INFO"/>
-    <logger name="com.base.framework.java.lang.reflect.ReflectionUtils" level="INFO"/>
-	<logger name="com.base.framework.cache.cache.CacheAdminFactory" level="WARN"/>
-    <logger name="com.base.framework.sessionmanager.session.DelegatingHttpSession" level="WARN"/>
-    <logger name="com.base.framework.sessionmanager.session.MixedSessionManager" level="WARN"/>
-    <logger name="com.base.framework.sessionmanager.session.AbstractCacheSessionManager" level="WARN"/>
+    <logger name="com.base.framework" level="INFO"/>
 
     <logger name="io.undertow" level="INFO"/>
 

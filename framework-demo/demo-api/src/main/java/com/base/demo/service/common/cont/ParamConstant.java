@@ -1,4 +1,4 @@
-package com.base.demo.service.common.dao.cont;
+package com.base.demo.service.common.cont;
 
 /**
  * ParamConstant

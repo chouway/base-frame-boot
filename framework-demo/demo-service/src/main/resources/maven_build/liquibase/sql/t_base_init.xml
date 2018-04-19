@@ -201,4 +201,12 @@
         ]]>
         </sql>
     </changeSet>
+
+    <changeSet id="init.add_index_to_t_base_param_info.20180419" author="ywzhou">
+        <sql>
+            ALTER TABLE "t_base_param_info"
+            ADD COLUMN "index" varchar(255);
+            COMMENT ON COLUMN "t_base_param_info"."index" IS '序列';
+        </sql>
+    </changeSet>
 </databaseChangeLog>

@@ -1,7 +1,9 @@
 package com.base.demo.service.common;
 
 import com.base.demo.domain.ParamInfo;
+import com.base.demo.service.common.vo.ParamInfoCond;
 import com.base.framework.common.exception.BusinessException;
+import org.springframework.beans.support.PagedListHolder;
 
 import java.util.List;
 
@@ -59,4 +61,13 @@ public interface IParamInfoService {
      * @throws BusinessException
      */
     int remove(String id)throws BusinessException;
+
+    /**
+     * 分页查询
+     * @param cond
+     * @param page
+     * @return
+     * @throws BusinessException
+     */
+    PagedListHolder<ParamInfo> getPage(ParamInfoCond cond,PagedListHolder page)throws BusinessException;
 }
