@@ -17,6 +17,7 @@
         <dependency>
             <groupId>com.base</groupId>
             <artifactId>framework-api</artifactId>
+            <scope>provided</scope>
         </dependency>
 
 
