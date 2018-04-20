@@ -3,7 +3,7 @@
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
-        <version>2.0.0.RELEASE</version>
+        <version>2.0.1.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -29,10 +29,12 @@
         <jdk.version>1.8</jdk.version>
         <junit.version>4.12</junit.version>
 
-        <fastjson.version>1.2.47</fastjson.version>
+
         <jetty-maven-plugin.version>7.6.16.v20140903</jetty-maven-plugin.version>
-        <spring-cloud-config-client.version>1.4.3.RELEASE</spring-cloud-config-client.version>
+
         <persistence-api.version>1.0.2</persistence-api.version>
+
+        <fastjson.version>1.2.47</fastjson.version>
         <logback.version>1.2.3</logback.version>
         <tk-mapper.version>1.0.0</tk-mapper.version>
         <tk-mapper-starter.version>2.0.0</tk-mapper-starter.version>
@@ -70,12 +72,6 @@
                 <version>${tk-mapper-starter.version}</version>
             </dependency>
 
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-config-client</artifactId>
-                <version>${spring-cloud-config-client.version}</version>
-            </dependency>
             <!-- test end -->
         </dependencies>
     </dependencyManagement>
