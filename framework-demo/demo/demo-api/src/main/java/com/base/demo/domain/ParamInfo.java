@@ -36,12 +36,6 @@ public class ParamInfo {
     private String remark;
 
     /**
-     * 序列
-     */
-    @Column(name = "index")
-    private String index;
-
-    /**
      * @return id
      */
     public String getId() {
@@ -139,23 +133,5 @@ public class ParamInfo {
      */
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    /**
-     * 获取序列
-     *
-     * @return index - 序列
-     */
-    public String getIndex() {
-        return index;
-    }
-
-    /**
-     * 设置序列
-     *
-     * @param index 序列
-     */
-    public void setIndex(String index) {
-        this.index = index;
     }
 }
