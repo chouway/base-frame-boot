@@ -23,7 +23,7 @@ public abstract class BaseService {
     protected ResultBO defaultFallback(){
         ResultBO resultBO = new ResultBO();
         resultBO.setCode(ErrConstant.SERVE_BUSI);
-        resultBO.setCode(ErrConstant.SERVE_BUSI_MSG);
+        resultBO.setMessage(ErrConstant.SERVE_BUSI_MSG);
         return resultBO;
     }
 
