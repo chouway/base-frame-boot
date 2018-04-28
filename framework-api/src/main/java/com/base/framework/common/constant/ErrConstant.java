@@ -7,7 +7,13 @@ package com.base.framework.common.constant;
  */
 public interface ErrConstant {
 
-    String SERVE_BUSI = "serve_busi";
+    String ERROR_SERVER = "ERROR_SERVER";
 
-    String SERVE_BUSI_MSG = "服务繁忙，请稍候再试";
+    String ERROR_SERVER_MSG = "服务繁忙，请稍候再试";
+
+
+    String ERROR_BUSI = "ERROR_BUSI";//业务错误
+
+    String ERROR_BUSI_MSG = "业务错误";//业务错误
+
 }

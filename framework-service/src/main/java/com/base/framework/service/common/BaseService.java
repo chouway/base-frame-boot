@@ -13,17 +13,22 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class BaseService {
 
-    protected Logger logger = LoggerFactory.getLogger(BaseService.class);
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     protected final String defaultFallback = "defaultFallback";
     /**
      * 默认的降级处理
      * @return
      */
-    protected ResultBO defaultFallback(){
+    protected ResultBO defaultFallback(Throwable e){
         ResultBO resultBO = new ResultBO();
-        resultBO.setCode(ErrConstant.SERVE_BUSI);
-        resultBO.setMessage(ErrConstant.SERVE_BUSI_MSG);
+        if(e instanceof BusinessException){
+            resultBO.setCode(ErrConstant.ERROR_BUSI);
+            resultBO.setMessage(e.getMessage());
+        }else{
+            resultBO.setCode(ErrConstant.ERROR_SERVER);
+            resultBO.setMessage(ErrConstant.ERROR_SERVER_MSG);
+        }
         return resultBO;
     }
 
