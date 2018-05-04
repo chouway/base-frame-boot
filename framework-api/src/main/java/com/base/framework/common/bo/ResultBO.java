@@ -21,6 +21,8 @@ public class ResultBO<T> implements Serializable {
 
     private String code;
 
+    private TraceBO traceBO;
+
     public ResultBO() {
     }
 
@@ -120,5 +122,13 @@ public class ResultBO<T> implements Serializable {
      */
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public TraceBO getTraceBO() {
+        return traceBO;
+    }
+
+    public void setTraceBO(TraceBO traceBO) {
+        this.traceBO = traceBO;
     }
 }

@@ -1,10 +1,12 @@
 package com.base.framework.service.common;
 
 import com.base.framework.common.bo.ResultBO;
+import com.base.framework.common.bo.TraceBO;
 import com.base.framework.common.constant.ErrConstant;
 import com.base.framework.common.exception.BusinessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 
 /**
  * BaseService 通用的抽象服务
@@ -29,7 +31,15 @@ public abstract class BaseService {
             resultBO.setCode(ErrConstant.ERROR_SERVER);
             resultBO.setMessage(ErrConstant.ERROR_SERVER_MSG);
         }
+        resultBO.setTraceBO(this.getTraceBO());
         return resultBO;
+    }
+
+    protected TraceBO getTraceBO(){
+        TraceBO traceBO = new TraceBO();
+        traceBO.setTraceId(MDC.get("traceId"));
+        traceBO.setSpanId(MDC.get("spanId"));
+        return traceBO;
     }
 
 }
