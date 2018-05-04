@@ -39,6 +39,7 @@ public abstract class BaseService {
         TraceBO traceBO = new TraceBO();
         traceBO.setTraceId(MDC.get("traceId"));
         traceBO.setSpanId(MDC.get("spanId"));
+        traceBO.setSpanExportable(MDC.get("spanExportable"));
         return traceBO;
     }
 

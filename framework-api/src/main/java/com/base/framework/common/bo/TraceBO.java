@@ -10,10 +10,14 @@ import java.io.Serializable;
 public class TraceBO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    //追踪id
     private String traceId;
 
+    //块id
     private String spanId;
+
+    //是否上送追踪服务器
+    private String spanExportable;
 
     public String getTraceId() {
         return traceId;
@@ -29,5 +33,13 @@ public class TraceBO implements Serializable {
 
     public void setSpanId(String spanId) {
         this.spanId = spanId;
+    }
+
+    public String getSpanExportable() {
+        return spanExportable;
+    }
+
+    public void setSpanExportable(String spanExportable) {
+        this.spanExportable = spanExportable;
     }
 }
