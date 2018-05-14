@@ -1,10 +1,11 @@
 package com.base.demo.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "t_base_union_info")
-public class UnionInfo {
+public class UnionInfo implements Serializable {
     /**
      * 平台id
      */
@@ -50,6 +51,8 @@ public class UnionInfo {
 
     @Column(name = "update_ts")
     private Date updateTs;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 获取平台id

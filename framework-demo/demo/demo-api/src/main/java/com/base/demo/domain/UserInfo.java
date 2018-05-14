@@ -1,10 +1,11 @@
 package com.base.demo.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "t_base_user_info")
-public class UserInfo {
+public class UserInfo implements Serializable {
     /**
      * 主键
      */
@@ -77,6 +78,8 @@ public class UserInfo {
      */
     @Column(name = "update_ts")
     private Date updateTs;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * 获取主键

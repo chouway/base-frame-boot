@@ -35,6 +35,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-maven-plugin</artifactId>
+            <version>${mybatis-generator-maven-plugin.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
             <scope>provided</scope>

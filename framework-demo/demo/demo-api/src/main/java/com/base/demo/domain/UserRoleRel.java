@@ -1,9 +1,10 @@
 package com.base.demo.domain;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "t_base_user_role_rel")
-public class UserRoleRel {
+public class UserRoleRel implements Serializable {
     @Column(name = "id")
     private String id;
 
@@ -18,6 +19,8 @@ public class UserRoleRel {
      */
     @Column(name = "role_id")
     private String roleId;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return id

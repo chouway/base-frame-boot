@@ -1,9 +1,10 @@
 package com.base.demo.domain;
 
+import java.io.Serializable;
 import javax.persistence.*;
 
 @Table(name = "t_base_param_info")
-public class ParamInfo {
+public class ParamInfo implements Serializable {
     @Id
     @Column(name = "id")
     private String id;
@@ -34,6 +35,14 @@ public class ParamInfo {
      */
     @Column(name = "remark")
     private String remark;
+
+    /**
+     * 序列
+     */
+    @Column(name = "index")
+    private String index;
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * @return id
@@ -133,5 +142,23 @@ public class ParamInfo {
      */
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    /**
+     * 获取序列
+     *
+     * @return index - 序列
+     */
+    public String getIndex() {
+        return index;
+    }
+
+    /**
+     * 设置序列
+     *
+     * @param index 序列
+     */
+    public void setIndex(String index) {
+        this.index = index;
     }
 }
